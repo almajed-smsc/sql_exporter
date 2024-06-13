@@ -73,7 +73,7 @@ func (j *Job) Init(logger log.Logger, queries map[string]string) error {
 		q.desc = prometheus.NewDesc(
 			name,
 			help,
-			append(q.Labels, "driver", "host", "database", "user", "col", "env"),
+			append(q.Labels, "driver", "host", "database", "env", "user", "col"),
 			prometheus.Labels{
 				"sql_job": j.Name,
 			},
