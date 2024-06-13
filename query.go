@@ -169,6 +169,7 @@ func (q *Query) updateMetric(conn *connection, res map[string]interface{}, value
 	labels = append(labels, conn.driver)
 	labels = append(labels, conn.host)
 	labels = append(labels, conn.database)
+	labels = append(labels, conn.env)
 	labels = append(labels, conn.user)
 	labels = append(labels, valueName)
 	// create a new immutable const metric that can be cached and returned on

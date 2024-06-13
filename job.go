@@ -73,7 +73,7 @@ func (j *Job) Init(logger log.Logger, queries map[string]string) error {
 		q.desc = prometheus.NewDesc(
 			name,
 			help,
-			append(q.Labels, "driver", "host", "database", "user", "col"),
+			append(q.Labels, "driver", "host", "database", "user", "col", "env"),
 			prometheus.Labels{
 				"sql_job": j.Name,
 			},
@@ -254,11 +254,15 @@ func (j *Job) updateConnections() {
 			}
 			// we expose some of the connection variables as labels, so we need to
 			// remember them
+
+			// Extract the query parameters
+
 			newConn := &connection{
 				conn:     nil,
 				url:      conn,
 				driver:   u.Scheme,
 				host:     u.Host,
+				env:	  u.Query().Get("env"),
 				database: strings.TrimPrefix(u.Path, "/"),
 				user:     user,
 			}

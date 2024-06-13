@@ -161,6 +161,7 @@ type connection struct {
 	host     string
 	database string
 	user     string
+	env		 string
 }
 
 // Query is an SQL query that is executed on a connection
@@ -171,6 +172,7 @@ type Query struct {
 	metrics       map[*connection][]prometheus.Metric
 	jobName       string
 	AllowZeroRows bool     `yaml:"allow_zero_rows"`
+	ReportFailure bool	   `yaml:"report_failure"`
 	Name          string   `yaml:"name"`      // the prometheus metric name
 	Help          string   `yaml:"help"`      // the prometheus metric help text
 	Labels        []string `yaml:"labels"`    // expose these columns as labels per gauge
