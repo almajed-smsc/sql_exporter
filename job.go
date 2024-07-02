@@ -360,7 +360,7 @@ func (j *Job) runOnceConnection(conn *connection, done chan int) {
 
 func (j *Job) markFailed(conn *connection) {
 	for _, q := range j.Queries {
-		failedScrapes.WithLabelValues(conn.driver, conn.host, conn.database, conn.user, q.jobName, q.Name).Set(1.0)
+		failedScrapes.WithLabelValues(conn.driver, conn.host, conn.database, conn.env, conn.user, q.jobName, q.Name).Set(1.0)
 	}
 }
 

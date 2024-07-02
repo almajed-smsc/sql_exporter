@@ -32,7 +32,7 @@ var (
 			Name: fmt.Sprintf("%s_last_scrape_failed", metricsPrefix),
 			Help: "Failed scrapes",
 		},
-		[]string{"driver", "host", "database", "user", "sql_job", "query"},
+		[]string{"driver", "host", "database", "env","user", "sql_job", "query"},
 	)
 	tmplStart                 = getenv("TEMPLATE_START", "{{")
 	tmplEnd                   = getenv("TEMPLATE_END", "}}")
